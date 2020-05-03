@@ -1,0 +1,192 @@
+<!--{subtemplate common/header}-->
+<!--[name]魔客吧-磨房图文列表页[/name]-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+
+<link rel="stylesheet" type="text/css" href="template/moke8_mofang/src/img/list.css" />
+
+<div id="pt" class="bm cl" style="border-left: 0; margin: 15px 0; background: none;">
+	<div class="z">
+		<!--{loop $cat[ups] $value}-->
+			<a href="{echo getportalcategoryurl($value[catid])}">$value[catname]</a><em>&rsaquo;</em>
+		<!--{/loop}-->
+		<a href="{echo getportalcategoryurl($cat[catid])}" style="color: #009C91; background: none;">$cat[catname]</a> <em>&rsaquo;</em>
+	</div>
+
+	  <div style="float: left;">
+	   <!--{if $cat[others] || $cat[subs]}-->	
+       <ul class="win8mi_catlist cl">
+         <!--{eval $x=1}-->
+         <!--{loop $cat[others] $value}-->
+         <li {if is_int($x/3)}class="end"{/if}><a href="{echo getportalcategoryurl($value[catid])}">$value[catname]</a></li>
+         <!--{eval $x++}-->
+         <!--{/loop}-->
+       </ul>
+	   <!--{/if}-->
+	  </div>
+	
+</div>
+
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+
+<!--
+<div id="ct" class="ct2 wp cl">
+-->
+<div id="ct" class="wp cl win8mi_simple win8mi_simple_list win8mi_tab" style="width: 980px;">
+	<div class="mn">
+		<!--{ad/articlelist/mbm hm/1}--><!--{ad/articlelist/mbm hm/2}-->
+		<!--[diy=listcontenttop]--><div id="listcontenttop" class="area"></div><!--[/diy]-->
+		<div class="bm">
+			<!--{if $cat[subs]}-->
+			<div class="bm_c bbda">
+				{lang sub_category}:&nbsp;&nbsp;
+				<!--{eval $i = 1;}-->
+				<!--{loop $cat[subs] $value}-->
+				<!--{if $i != 1}--><span class="pipe">|</span><!--{/if}--><a href="{echo getportalcategoryurl($value[catid]);}" class="xi2">$value[catname]</a><!--{eval $i--;}-->
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+<!--
+			<div class="bm_c xld ">
+-->
+			<div class="bm_c  win8mi_xld ">
+			<!--{loop $list['list'] $value}-->
+			<!--{eval $highlight = article_title_style($value);}-->
+<!--
+				<dl class="bbda cl">
+-->				<dl class="bbs cl">
+						<!--{if $value[pic]}--><div class="atc  win8mi_list_pic"><a href="portal.php?mod=view&aid=$value[aid]" target="_blank"><img src="$value[pic]" alt="$value[title]" class="tn" /></a></div>
+						<!--{else}-->
+						<div style="float: left; width: 260px; height: 180px; border: 0; margin: 0px 15px 15px 0px; padding: 0; background: url(template/moke8_mofang/src/img/nopic.png) no-repeat 0 0;">
+						</div>
+						<!--{/if}-->
+                        
+					<dt class="xs2"><a href="portal.php?mod=view&aid=$value[aid]" target="_blank" class="xi2" $highlight>$value[title]</a> <!--{if $value[status] == 1}-->({lang moderate_need})<!--{/if}--></dt>
+					<dd class="xs2 cl" style="padding-top: 5px;"> 
+                        <p style="padding: 5px 0;"><span style="color: rgb(189, 196, 199);"> $value[dateline]</span></p>
+                        $value[summary] 
+					</dd>				
+				</dl>
+			<!--{/loop}-->
+			</div>
+			<!--[diy=listloopbottom]--><div id="listloopbottom" class="area"></div><!--[/diy]-->
+		</div>
+		<!--{ad/articlelist/mbm hm/3}--><!--{ad/articlelist/mbm hm/4}-->
+		<!--{if $list['multi']}--><div class="pgs cl">{$list['multi']}</div><!--{/if}-->
+
+		<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+
+	</div>
+	<div class="sd pph"> 
+	  
+<div class="sidebar" style="padding-top: 0;">
+
+        <div class="widget" style="padding: 20px 0; margin-top: 10px; border-top: 0; border-left: 3px solid #009C91; background: #F6F6F6;">
+            <div class="socialwrap">
+
+        <a style="text-decoration: none; position: relative;" href="portal.php?mod=portalcp&ac=article&catid=$cat[catid]" class="fb"><span class="social-button-style"><span class="button facebook-blue cell1 img"><img src="template/moke8_mofang/src/img/portal_post.png"></span><span class="button cell2">投稿</span><span class="nameology">New Post</span></span></a><a style="text-decoration: none; position: relative;" href="$_G['siteurl']" onclick="addFavorite(this.href, 'Discuz! Board');return false;" class="tw"><span class="social-button-style"><span class="button twitter-blue cell1 img"><img src="template/moke8_mofang/src/img/collection.png"></span><span class="button cell2">收藏本页</span><span class="nameology">Favorite</span></span></a> 
+            <!--{if $_G[setting][rssstatus] && !$_GET['archiveid']}--><a style="text-decoration: none; position: relative;" href="portal.php?mod=rss&catid=$cat[catid]" class="rss"><span class="social-button-style"><span class="button rss-orange cell1 img"><img src="template/moke8_mofang/src/img/rss.png"></span><span class="button cell2">订阅</span><span class="nameology">Rss</span></span></a><!--{/if}--> </div>
+            <div class="clear"></div>
+        </div>
+
+
+        <div class="widget">
+          <div class="tabswrap">
+            <ul class="tabs  cl">
+              <li><a class="active" href="#tab1">最新文章</a></li>
+              <li><a href="#tab2">本周最热</a></li>
+              <li><a href="#tab3">本月最热</a></li>
+            </ul>
+            <ul class="tabs-content">
+    
+              <li id="tab1" class="active">
+              <!--[diy=metro1]--><div id="metro1" class="area"></div><!--[/diy]-->
+              </li>
+
+              <li id="tab2">
+              <!--[diy=metro2]--><div id="metro2" class="area"></div><!--[/diy]-->
+              </li>
+              
+              <li id="tab3">
+              <!--[diy=metro3]--><div id="metro3" class="area"></div><!--[/diy]--> 
+              </li>
+              
+            </ul>
+          </div>
+        </div>
+
+
+            <div class="index_tit">
+              <div id="index_tit1" class="area">
+                 <h3>广告位</h3>
+              </div>
+            </div>
+            <div class="ads125">
+              <!--[diy=metro_ad1]--><div id="metro_ad1" class="area"></div><!--[/diy]--> 
+            </div>
+      </div>	  	  
+        
+	   <div style="width: 300px; height: 320px; border: 0; margin: 0; padding: 0; overflow: hidden; background: none">
+          <!--[diy=diyr01]--><div id="diyr01" class="area"></div><!--[/diy]-->
+       </div>
+
+		<div class="drag">
+			<!--[diy=diyrighttop]--><div id="diyrighttop" class="area"></div><!--[/diy]-->
+		</div>
+
+
+<!--{if $cat[others]}-->
+		<div class="bm">
+<!--			<div class="bm_h cl">
+				<h2>{lang category_related}</h2>
+			</div>
+			<div class="bm_c">
+-->
+		</div>
+<!--{/if}-->
+
+		<!-- 广告图片 -->
+		<div class="win8mi_diy m_t_10 col_win8mi_title">
+			<!--[diy=diy_sd_2]--><div id="diy_sd_2" class="area"></div><!--[/diy]-->
+		</div>
+
+		<!-- 幻灯图片 -->
+		<div class="win8mi_diy m_t_10  col_win8mi_title">
+			<!--[diy=diy_sd_3]--><div id="diy_sd_3" class="area"></div><!--[/diy]-->
+		</div>
+
+        
+		<!-- 热门图片 -->
+		<div class="win8mi_diy m_t_10 shadow  col_win8mi_title">
+			<!--[diy=diy_sd_hot]--><div id="diy_sd_hot" class="area"></div><!--[/diy]-->
+		</div>
+
+		<!-- 点击/评论 排行 -->
+		<div class="win8mi_diy m_t_10 col_win8mi_title shadow ">
+			<!--[diy=diy_sd_4]--><div id="diy_sd_4" class="area"></div><!--[/diy]-->
+		</div>
+        
+		<!-- 图文推荐 -->
+		<div class="win8mi_diy m_t_10 col_win8mi_title shadow ">
+			<!--[diy=diy_sd_5]--><div id="diy_sd_5" class="area"></div><!--[/diy]-->
+		</div>
+
+	</div>
+</div>
+
+<div class="wp" style="float: left; width: 964px; margin: 0 auto; height: auto; border: 0; background: none;">
+	<!--[diy=diybottom]--><div id="diybottom" class="area"></div><!--[/diy]-->
+</div>
+
+<div class="wp mtn">
+	<!--[diy=diy_bottom]--><div id="diy_bottom" class="area"></div><!--[/diy]-->
+</div>
+
+<script type="text/javascript" src="template/moke8_mofang/src/js/jquery.js"></script>
+<script type="text/javascript" src="template/moke8_mofang/src/js/custom.js"></script> 
+<!--{subtemplate common/footer}-->

@@ -1,0 +1,44 @@
+<!--{template common/header}-->
+<link rel="stylesheet" type="text/css" id="win8mi_diy" href="template/moke8_mofang/src/img/portaldiy.css?{VERHASH}" />
+<style id="diy_style" type="text/css"></style>
+
+<script src="template/moke8_mofang/src/js/superslide.2.1.js" type="text/javascript"></script>
+</div>
+<!--[diy=diytop]--><div id="diytop" class="area"></div><!--[/diy]-->
+
+   <div class="part1box">
+   <div class="part1">
+	     <!--[diy=part1]--><div id="part1" class="area"></div><!--[/diy]-->  	     
+   </div>
+   </div>
+   <div class="part2 wp">
+      <div class="part2-l">
+	     <div class="pbox1" style="width: 662px; height: 330px; border: 0; overflow: hidden; background: none;">
+		    <!--[diy=pbox1]--><div id="pbox1" class="area"></div><!--[/diy]-->
+	     </div>
+	     <div class="pbox2" style="width: 662px; height: 310px; border: 0; overflow: hidden; background: none;">
+		    <!--[diy=pbox2]--><div id="pbox2" class="area"></div><!--[/diy]-->
+	     </div>		 
+		    <!--[diy=part2-l]--><div id="part2-l" class="area"></div><!--[/diy]-->	 
+	  </div>
+      <div class="part2-r">
+	     <!--[diy=part2-r]--><div id="part2-r" class="area"></div><!--[/diy]-->
+	  </div>   
+   </div>
+
+<script type="text/javascript">
+jQuery(".focus_box").slide({ mainCell:".bd ul",titCell:".hd ul",autoPage:true,autoPlay:true});
+jQuery(".focus_part").slide({ titCell:".index_tit ul",autoPage:true,effect:"left",delayTime:300});
+jQuery(".a_part").slide({ mainCell:".bd ul",autoPlay:true,delayTime:300,interTime:3000 });
+jQuery(".b_part").slide({ mainCell:".bd ul",autoPlay:true,delayTime:460,interTime:3500 });
+jQuery(".c_part").slide({ mainCell:".bd ul",autoPlay:true,delayTime:260,interTime:2500 });
+jQuery(".d_part").slide({ mainCell:".bd ul",autoPlay:true,delayTime:300,interTime:4000 });
+jQuery(".part_textlist").slide({ mainCell:".bd ul",titCell:".hd ul",autoPage:true,effect:"leftLoop",delayTime:300});
+jQuery('.topfull').hover(function(){
+    jQuery(".cover", this).stop().animate({left:'10px'},{queue:false,duration:160});}, function() {
+    jQuery(".cover", this).stop().animate({left:'-260px'},{queue:false,duration:160});
+});
+</script>
+
+<script src="misc.php?mod=diyhelp&action=get&type=index&diy=yes&r={echo random(4)}" type="text/javascript"></script>
+<!--{template common/footer}-->
